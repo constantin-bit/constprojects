@@ -17,12 +17,13 @@ int main(){
         m = m + 2;
         n = n * (-1) * x / m * abs(m - 3);
     }
-    if (s1 > s2) cout << printf("%.5f", s1) << '>' << printf("%.5f", s2);
+    cout.precision(10); 
+    if (s1 > s2) cout << s1 << '>' << s2;
     else{
-        if (s1 == s2) cout << printf("%.5f", s1) << '=' << printf("%.5f", s2);
-        else cout << printf("%.5f", s1) << '<' << printf("%.5f", s2);
+        if (s1 == s2) cout << s1 << '=' << s2;
+        else cout << s1 << '<' << s2;
     }
     cout << endl;
-    cout << printf("%.5f", s2);
+    cout << s2;
     return 0;
 }
