@@ -6,24 +6,24 @@ using namespace std;
 //using std::cin;
 
 int main(){
-    double x, k, n, s1, s2;
-    int m = 2;
+    double x, k, slag, sum1, sum2;
+    int step = 2;
     cin >> x >> k;
-    n = -x / 2;
-    s1 = 1 / (pow(1 + x, 0.5));
-    s2 = 1;
-    while (abs(n) >= pow(10, -k)){
-        s2 = s2 + n;
-        m = m + 2;
-        n = n * (-1) * x / m * abs(m - 3);
+    slag = -x / 2;
+    sum1 = 1 / (pow(1 + x, 0.5));
+    sum2 = 1;
+    while (abs(slag) >= pow(10, -k)){
+        sum2 = sum2 + slag;
+        step = step + 2;
+        slag = slag * (-1) * x / step * abs(step - 3);
     }
     cout.precision(10); 
-    if (s1 > s2) cout << s1 << '>' << s2;
+    if (sum1 > sum2) cout << sum1 << ' > ' << sum2;
     else{
-        if (s1 == s2) cout << s1 << '=' << s2;
-        else cout << s1 << '<' << s2;
+        if (sum1 == sum2) cout << sum1 << ' = ' << sum2;
+        else cout << sum1 << ' < ' << sum2;
     }
     cout << endl;
-    cout << s2;
+    cout << sum2;
     return 0;
 }
