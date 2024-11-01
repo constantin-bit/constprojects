@@ -5,6 +5,7 @@ using namespace std;
 
 int main(){
     ifstream fin("..\\files_for_labs\\for_laba5.txt");
+    ofstream fout("..\\files_for_labs\\from_laba5.txt");
     string line;
     int line_number = 0, j = 0, count = 0;
     while (getline(fin, line)){
@@ -18,7 +19,7 @@ int main(){
         }
         else{
             if (count != 0){
-                cout << count << ' ' << j + 1 << endl;
+                fout << count << ' ' << j + 1 << endl;
             } 
             j = line_number;
             count = 0;
@@ -26,5 +27,6 @@ int main(){
         line_number += 1;
     }
     fin.close();
+    fout.close();
     return 0;
 }
