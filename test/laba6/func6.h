@@ -22,16 +22,24 @@ class proper_fraction{
         }
         void output(){
             double division;
-            if ((denominator != 0) && (numerator != 0) && (numerator != 1) && (abs(denominator) % abs(numerator) == 0)){
-                int k = denominator / numerator;
-                denominator /= k;
-                numerator /= k;
+            if ((numerator != 0) && (numerator != 1)){
+                int den = abs(denominator);
+                int num = abs(numerator);
+                while ((den != 0) && (num != 0)){
+                    if (den > num) den = den % num;
+                    else num = num % den;
+                }
+                numerator /= den + num;
+                denominator /= den + num;
             }
             division = double(numerator) / double(denominator);
             if (division > 0) sign = 1;
             if (division < 0) sign = -1;
-            if (numerator != 0)    std::cout << sign * abs(numerator) << "/" << abs(denominator) << std::endl;
-            else std::cout << 0 << std::endl;
+            if (numerator == 0)    std::cout << 0 << std::endl;
+            else{
+                if (abs(denominator) != 1) std::cout << sign * abs(numerator) << "/" << abs(denominator) << std::endl;
+                else std::cout << sign * abs(numerator) << std::endl;
+            }
         }
         proper_fraction operator+(const proper_fraction &b) const {
             return proper_fraction(numerator * b.denominator + denominator * b.numerator, denominator * b.denominator);
@@ -41,7 +49,7 @@ class proper_fraction{
         }
         proper_fraction operator/(const proper_fraction &b) const {
             assert(b.numerator != 0); 
-            return proper_fraction(numerator / b.numerator, denominator / b.denominator);
+            return proper_fraction(numerator * b.denominator, denominator * b.numerator);
         }
         proper_fraction operator+(const int &b) const {
             return proper_fraction(numerator + b * denominator, denominator);
@@ -51,7 +59,7 @@ class proper_fraction{
         }
         proper_fraction operator/(const int &b) const {
             assert(b != 0);
-            return proper_fraction(numerator / b, denominator);
+            return proper_fraction(numerator, b * denominator);
         }
     private:
         int sign;
