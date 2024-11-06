@@ -8,7 +8,6 @@ class proper_fraction{
             numerator = _numerator;
             denominator = _denominator;
             assert(denominator != 0);
-            assert(abs(numerator) < abs(denominator));
         }
         int get_numerator() const{
             return numerator;
@@ -37,8 +36,13 @@ class proper_fraction{
             if (division < 0) sign = -1;
             if (numerator == 0)    std::cout << 0 << std::endl;
             else{
-                if (abs(denominator) != 1) std::cout << sign * abs(numerator) << "/" << abs(denominator) << std::endl;
-                else std::cout << sign * abs(numerator) << std::endl;
+                if (abs(denominator) < abs(numerator)){
+                    std::cout << sign * (abs(numerator) / abs(denominator)) << "," << sign * (abs(numerator) - (abs(numerator) / abs(denominator))* abs(denominator)) << "/" << abs(denominator) << std::endl;
+                }
+                else{
+                    if (abs(denominator) != 1) std::cout << sign * abs(numerator) << "/" << abs(denominator) << std::endl;
+                    else std::cout << sign * abs(numerator) << std::endl;
+                }
             }
         }
         proper_fraction operator+(const proper_fraction &b) const {
