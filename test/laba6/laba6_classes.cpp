@@ -27,7 +27,7 @@ int main(){
     proper_fraction d7 = d3 / d4;
     cout << "d7="; 
     d7.output();   
-    proper_fraction d8 = d1 + 1;//not proper fraction, error
+    proper_fraction d8 = d1 + 1;
     d8.output();
     proper_fraction d9 = d7 + d1;
     cout << "d9="; 
