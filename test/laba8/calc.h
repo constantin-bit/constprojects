@@ -2,6 +2,7 @@
 #include <iostream>
 #include "stack.h"
 #include <stdexcept>
+#include <string>
 
 class expression{
     private:
@@ -16,9 +17,10 @@ class expression{
             line = new_line;
         }
         int check(){
-            char num[0];
-            stack numbers(num, 0);
-            stack other(num, 0);
+            char num[1];
+            num[0] = 'p';
+            stack numbers(num, 1);
+            stack other(num, 1);
             int i = 0;
             while (line[i] != '\0'){
                 if ((line[i] == '(') && (line[i + 1] == ')')){
@@ -142,7 +144,7 @@ class expression{
                     continue;
                 }
             }
-            for(int i = 0; i < numbers.get_size(); i++){
+            for(int i = 1; i < numbers.get_size(); i++){
                 ready_line += numbers[i];
             }
             if (i == -1){
@@ -158,8 +160,9 @@ class expression{
             if (is_correct_expression == 0) return 0;
             int begin = 0, end = 0;
             int k = 0;
-            double num[0];
-            stack numbers(num, 0);
+            double num[1];
+            num[0] = 0.12;
+            stack numbers(num, 1);
             while (true){
                 if (ready_line[k] == '\0') break;
                 if ((ready_line[k] > 47) && (ready_line[k] < 58)){
