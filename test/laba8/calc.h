@@ -13,14 +13,17 @@ class expression{
         expression(std::string _line){
             line = _line;
         }
+        expression() {
+            line = "";
+        }
         void set_line(std::string new_line){
             line = new_line;
         }
         int check(){
             char num[1];
             num[0] = 'p';
-            stack numbers(num, 1);
-            stack other(num, 1);
+            stack<char> numbers(num, 1);
+            stack<char> other(num, 1);
             int i = 0;
             while (line[i] != '\0'){
                 if ((line[i] == '(') && (line[i + 1] == ')')){
@@ -51,7 +54,7 @@ class expression{
             int j = 1;
             other << 'k';
             while (true){
-                char test;//curr_chr
+                char test;
                 other >> test;
                 other << test;
                 if (_line[j] == 'k'){
@@ -162,7 +165,7 @@ class expression{
             int k = 0;
             double num[1];
             num[0] = 0.12;
-            stack numbers(num, 1);
+            stack<double> numbers(num, 1);
             while (true){
                 if (ready_line[k] == '\0') break;
                 if ((ready_line[k] > 47) && (ready_line[k] < 58)){

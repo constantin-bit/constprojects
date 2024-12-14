@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cassert>
 
+//stack
 template <typename T>
 class stack{
     public:
